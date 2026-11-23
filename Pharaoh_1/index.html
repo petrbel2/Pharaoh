@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171b24">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Фараон</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="sun-mark">☼</span><span>ФАРАОН</span></div>
+      <div class="turn-block"><span>ХОД</span><strong id="turn">01</strong><i>/ 30</i></div>
+      <div class="phase-head"><span class="phase-dot"></span><span id="phase-title">Строительство</span></div>
+    </header>
+
+    <section class="resources" aria-label="Ресурсы">
+      <article class="resource grain"><div class="resource-top"><span class="res-icon">▤</span><span>ЗЕРНО</span><span class="capacity" id="grain-cap">∞</span></div><div class="res-number" id="grain">6</div><div class="res-growth" id="grain-growth">— / ход</div></article>
+      <article class="resource stone"><div class="resource-top"><span class="res-icon">◆</span><span>КАМЕНЬ</span><span class="capacity">∞</span></div><div class="res-number" id="stone">0</div><div class="res-growth" id="stone-growth">— / ход</div></article>
+      <article class="resource faith"><div class="resource-top"><span class="res-icon">✦</span><span>ВЕРА</span><span class="capacity" id="faith-cap">3</span></div><div class="res-number" id="faith">0</div><div class="res-growth" id="faith-growth">— / ход</div></article>
+      <article class="resource people"><div class="resource-top"><span class="res-icon">♟</span><span>НАСЕЛЕНИЕ</span><span class="capacity">∞</span></div><div class="res-number" id="population">5</div><div class="res-growth" id="people-growth">— / ход</div></article>
+    </section>
+
+    <div class="game-layout">
+      <section class="map-panel">
+        <div class="map-head"><div><span class="eyebrow">ДОЛИНА НИЛА</span><span class="map-sub" id="map-sub">Расположите новое здание рядом с поселением</span></div><div class="worker-count" id="worker-count">РАБОЧИЕ <b>0 / 5</b></div></div>
+        <div id="board" class="board" role="grid" aria-label="Игровое поле 10 на 10"></div>
+        <div class="map-legend"><span><i class="legend-swatch water"></i>Нил</span><span><i class="legend-swatch flood"></i>Пойма</span><span><i class="legend-swatch desert"></i>Пустыня</span><span><i class="legend-swatch hill"></i>Холмы</span><span><i class="legend-swatch settlement"></i>Поселение</span></div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="build-section">
+          <div class="section-title"><span>СТРОИТЕЛЬСТВО</span><span id="actions-left" class="action-counter">1 действие</span></div>
+          <div class="building-list" id="building-list">
+            <button class="building-choice" data-building="farm"><span class="building-icon farm-icon">♧</span><span class="building-name">Ферма</span><span class="building-cost">бесплатно</span></button>
+            <button class="building-choice" data-building="quarry"><span class="building-icon quarry-icon">⛏</span><span class="building-name">Каменоломня</span><span class="building-cost">бесплатно</span></button>
+            <button class="building-choice" data-building="temple"><span class="building-icon temple-icon">▤</span><span class="building-name">Храм</span><span class="building-cost">3 ◆</span></button>
+            <button class="building-choice" data-building="pyramid"><span class="building-icon pyramid-icon">△</span><span class="building-name">Пирамида</span><span class="building-cost">100 ◆ · 5 ✦</span></button>
+          </div>
+          <button id="extra-actions" class="extra-actions">✦ Потратить 3 веры → 2 действия</button>
+          <div class="selection-note" id="selection-note">Выберите здание, затем клетку на карте</div>
+        </section>
+
+        <section class="tech-section">
+          <div class="section-title"><span>ТЕХНОЛОГИИ</span><span class="tech-clock">⌛ 5 ходов</span></div>
+          <div class="tech-list" id="tech-list"></div>
+          <div class="tech-progress" id="tech-progress">В фазе технологий выберите открытие</div>
+        </section>
+
+        <div class="phase-footer">
+          <div id="event-note" class="event-note">Нил ждёт разлива</div>
+          <button class="next-button" id="next-phase"><span id="next-label">К распределению рабочих</span><b>→</b></button>
+        </div>
+      </aside>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <div id="end-screen" class="end-screen hidden"><div class="end-card"><div class="end-symbol" id="end-symbol">△</div><h1 id="end-title"></h1><p id="end-copy"></p><button id="restart">Начать заново</button></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
